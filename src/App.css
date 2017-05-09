@@ -1,24 +1,64 @@
-.App {
+@import url('https://fonts.googleapis.com/css?family=Chonburi|BioRhyme');
+
+html {
+  font-family: sans-serif;
+  background: #00b4ff;
+}
+
+h1 {
+  color: #F5B700;
+  font-family: Chonburi, serif;
+  font-size: 4rem;
   text-align: center;
+  margin-bottom: 0;
+  text-shadow: 7px 7px 0 rgba(0,0,0,0.1);
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+h2 {
+  font-family: BioRhyme, sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 0;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
+.things {
+  list-style: none;
+  padding-left: 0;
+  max-width: 400px;
+  margin: 50px auto;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+}
+
+.thing {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #F1F1F1;
+}
+
+.thing:last-child {
+  border-bottom: 0;
+}
+
+
+input:checked + p {
+  background:#F9F9F9;
+  text-decoration: line-through;
+}
+
+input[type="checkbox"] {
+  margin: 20px;
+}
+
+p {
+  margin: 0;
   padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  transition: background 0.2s;
+  flex: 1;
+  font-family: 'helvetica neue';
+  font-size: 20px;
+  font-weight: 200;
+  border-left: 1px solid #D1E2FF;
 }
