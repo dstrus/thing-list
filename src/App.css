@@ -28,7 +28,7 @@ h2 {
   list-style: none;
   padding-left: 0;
   max-width: 400px;
-  margin: 50px auto;
+  margin: 20px auto;
   background: white;
   border-radius: 5px;
   box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
@@ -90,4 +90,18 @@ input[type="checkbox"] {
 
 .actions button.remove:hover {
   color: #AD343E;
+}
+
+button.add-thing {
+  background-color: #F5B700;
+  border: 0;
+  border-radius: 5px;
+  width: 400px;
+  display: block;
+  margin: 0 auto;
+  padding: 20px;
+  transition: background 0.2s;
+  font-family: 'helvetica neue', sans-serif;
+  font-size: 20px;
+  font-weight: 200;
 }

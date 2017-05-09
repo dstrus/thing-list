@@ -7,11 +7,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      things: {
-        'thing-1': { id: 'thing-1', name: 'Milk', completed: false },
-        'thing-2': { id: 'thing-2', name: 'Bread', completed: true },
-        'thing-3': { id: 'thing-3', name: 'Bibb lettuce', completed: false },
-      }
+      things: { }
     }
   }
 
@@ -38,7 +34,7 @@ class App extends Component {
   
   addThing = () => {
     const things = {...this.state.things}
-    const thing = this.thing({ name: 'My new thing' })
+    const thing = this.thing({ name: 'Enter a thing' })
     things[thing.id] = thing
     this.setState({ things })
   }
@@ -52,7 +48,7 @@ class App extends Component {
       <div className="App">
         <h1>ThingList</h1>
         <h2>So Many Things</h2>
-        <button onClick={this.addThing}>Add Thing</button>
+        <button className="add-thing" onClick={this.addThing}>Add Thing</button>
         <ThingList {...this.state} {...actions} />
       </div>
     );
