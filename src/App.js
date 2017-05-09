@@ -37,7 +37,7 @@ class App extends Component {
   thing = () => {
     return {
       id: `thing-${Date.now()}`,
-      name: 'Enter a thing',
+      name: '',
       completed: false,
     }
   }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 const Actions = ({ thing, removeThing }) => (
     <span className="actions">
@@ -8,36 +8,52 @@ const Actions = ({ thing, removeThing }) => (
     </span>
 )
 
-const Thing = ({ thing, saveThing, removeThing }) => {
-  let name = thing.name
-
-  const toggleChecked = (ev) => {
-    thing.completed = ev.target.checked
-    saveThing(thing)
+class Thing extends Component {
+  componentDidMount() {
+    if (this.nameInput.textContent === '') {
+      this.nameInput.focus()
+    }
   }
 
-  const updateName = (ev) => {
+  toggleChecked = (ev) => {
+    this.props.thing.completed = ev.target.checked
+    this.props.saveThing(this.props.thing)
+  }
+
+  updateName = (ev) => {
+    const thing = {...this.props.thing}
     thing.name = ev.target.textContent
-    saveThing(thing)
+    this.props.saveThing(thing)
   }
 
-  const saveOnEnter = (ev) => {
+  saveOnEnter = (ev) => {
     if (ev.keyCode === 13) {
       ev.preventDefault()
       ev.target.blur()
     }
   }
 
-  return (
-    <li className="thing">
-      <input type="checkbox" defaultChecked={thing.completed} onChange={toggleChecked} />
-      <div className="details">
-        <span className="name" contentEditable onBlur={updateName} onKeyDown={saveOnEnter}>{thing.name}</span>
-        {' '}
-        <Actions thing={thing} removeThing={removeThing}  />
-      </div>
-    </li>
-  )
+  render() {
+    const thing = this.props.thing
+    return (
+      <li className="thing">
+        <input type="checkbox" defaultChecked={thing.completed} onChange={this.toggleChecked} />
+        <div className="details">
+          <span
+            className="name"
+            contentEditable
+            onBlur={this.updateName}
+            onKeyDown={this.saveOnEnter}
+            ref={(input) => this.nameInput = input}
+          >
+            {thing.name}
+          </span>
+          {' '}
+          <Actions thing={thing} removeThing={this.props.removeThing}  />
+        </div>
+      </li>
+    )
+  }
 }
 
 export default Thing
