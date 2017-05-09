@@ -3,7 +3,7 @@ import React from 'react'
 const Thing = ({ thing }) => {
   return (
     <li className="thing">
-      <input type="checkbox"/>
+      <input type="checkbox" defaultChecked={thing.completed} />
       <p>{thing.name}</p>
     </li>
   )

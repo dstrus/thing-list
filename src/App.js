@@ -8,9 +8,9 @@ class App extends Component {
     super()
     this.state = {
       things: {
-        'thing-1': { id: 'thing-1', name: 'Milk' },
-        'thing-2': { id: 'thing-2', name: 'Bread' },
-        'thing-3': { id: 'thing-3', name: 'Bibb lettuce' },
+        'thing-1': { id: 'thing-1', name: 'Milk', completed: false },
+        'thing-2': { id: 'thing-2', name: 'Bread', completed: true },
+        'thing-3': { id: 'thing-3', name: 'Bibb lettuce', completed: false },
       }
     }
   }
