@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Chonburi|BioRhyme');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css');
 
 html {
   font-family: sans-serif;
@@ -23,6 +24,7 @@ h2 {
 }
 
 .things {
+  position: relative;
   list-style: none;
   padding-left: 0;
   max-width: 400px;
@@ -38,12 +40,8 @@ h2 {
   border-bottom: 1px solid #F1F1F1;
 }
 
-.thing:last-child {
-  border-bottom: 0;
-}
 
-
-input:checked + p {
+input:checked + .details {
   background:#F9F9F9;
   text-decoration: line-through;
 }
@@ -52,13 +50,48 @@ input[type="checkbox"] {
   margin: 20px;
 }
 
-p {
+.thing .details {
   margin: 0;
   padding: 20px;
   transition: background 0.2s;
   flex: 1;
-  font-family: 'helvetica neue';
+  font-family: 'helvetica neue', sans-serif;
   font-size: 20px;
   font-weight: 200;
   border-left: 1px solid #D1E2FF;
+  display: flex;
+  align-items: center;
+}
+
+.thing .name {
+  flex: 1;
+}
+
+.actions {
+  transition: 0.3s;
+  opacity: 0;
+  margin: -10px 0;
+}
+
+.thing:hover .actions {
+  opacity: 1;
+}
+
+.actions button {
+  border: 0;
+  background: transparent;
+  color: #999;
+  font-size: 1.5rem;
+}
+
+.actions button:hover {
+  color: black;
+}
+
+.actions button.remove:hover {
+  color: #AD343E;
+}
+
+.actions button.edit:hover {
+  color: #00b4ff;
 }
