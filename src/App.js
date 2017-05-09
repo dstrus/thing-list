@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import ThingList from './ThingList'
+import base from './base'
 import './App.css';
 
 class App extends Component {
@@ -11,6 +12,16 @@ class App extends Component {
     }
   }
 
+  componentWillMount() {
+    this.ref = base.syncState(
+      'things',
+      {
+        context: this,
+        state: 'things',
+      }
+    )
+  }
+
   saveThing = (thing) => {
     const things = {...this.state.things}
     things[thing.id] = thing
@@ -19,22 +30,21 @@ class App extends Component {
 
   removeThing = (thing) => {
     const things = {...this.state.things}
-    delete things[thing.id]
-    // things[thing.id] = null
+    things[thing.id] = null
     this.setState({ things })
   }
 
-  thing = ({name, completed}) => {
+  thing = () => {
     return {
       id: `thing-${Date.now()}`,
-      name,
-      completed,
+      name: 'Enter a thing',
+      completed: false,
     }
   }
   
   addThing = () => {
     const things = {...this.state.things}
-    const thing = this.thing({ name: 'Enter a thing' })
+    const thing = this.thing()
     things[thing.id] = thing
     this.setState({ things })
   }

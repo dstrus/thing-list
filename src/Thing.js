@@ -21,11 +21,18 @@ const Thing = ({ thing, saveThing, removeThing }) => {
     saveThing(thing)
   }
 
+  const saveOnEnter = (ev) => {
+    if (ev.keyCode === 13) {
+      ev.preventDefault()
+      ev.target.blur()
+    }
+  }
+
   return (
     <li className="thing">
       <input type="checkbox" defaultChecked={thing.completed} onChange={toggleChecked} />
       <div className="details">
-        <span className="name" contentEditable onBlur={updateName}>{thing.name}</span>
+        <span className="name" contentEditable onBlur={updateName} onKeyDown={saveOnEnter}>{thing.name}</span>
         {' '}
         <Actions thing={thing} removeThing={removeThing}  />
       </div>
