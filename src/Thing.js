@@ -1,19 +1,19 @@
 import React from 'react'
 
-const Actions = ({ thing }) => {
+const Actions = ({ thing, removeThing }) => {
   return (
     <span className="actions">
       <button className="edit">
         <i className="fa fa-pencil"></i>
       </button>
-      <button className="remove">
+      <button className="remove" onClick={() => removeThing(thing)}>
         <i className="fa fa-trash-o"></i>
       </button>
     </span>
   )
 }
 
-const Thing = ({ thing, saveThing }) => {
+const Thing = ({ thing, saveThing, removeThing }) => {
   const toggleChecked = (ev) => {
     thing.completed = ev.target.checked
     saveThing(thing)
@@ -25,7 +25,7 @@ const Thing = ({ thing, saveThing }) => {
       <div className="details">
         <span className="name">{thing.name}</span>
         {' '}
-        <Actions />
+        <Actions thing={thing} removeThing={removeThing}  />
       </div>
     </li>
   )
