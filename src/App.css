@@ -104,4 +104,5 @@ button.add-thing {
   font-family: 'helvetica neue', sans-serif;
   font-size: 20px;
   font-weight: 200;
+  box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
 }
