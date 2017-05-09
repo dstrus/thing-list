@@ -15,12 +15,21 @@ class App extends Component {
     }
   }
 
+  saveThing = (thing) => {
+    const things = {...this.state.things}
+    things[thing.id] = thing
+    this.setState({ things })
+  }
+
   render() {
+    const actions = {
+      saveThing: this.saveThing,
+    }
     return (
       <div className="App">
         <h1>ThingList</h1>
         <h2>So Many Things</h2>
-        <ThingList {...this.state} />
+        <ThingList {...this.state} {...actions} />
       </div>
     );
   }
