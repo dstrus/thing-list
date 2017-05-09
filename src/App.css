@@ -91,7 +91,3 @@ input[type="checkbox"] {
 .actions button.remove:hover {
   color: #AD343E;
 }
-
-.actions button.edit:hover {
-  color: #00b4ff;
-}
