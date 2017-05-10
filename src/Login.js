@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import base from './base'
 
 const Login = ({ authHandler }) => {
