@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import ContentEditable from 'react-contenteditable'
 
 const Actions = ({ thing, removeThing }) => (
     <span className="actions">
@@ -10,8 +12,9 @@ const Actions = ({ thing, removeThing }) => (
 
 class Thing extends Component {
   componentDidMount() {
-    if (this.nameInput.textContent === '') {
-      this.nameInput.focus()
+    const input = ReactDOM.findDOMNode(this.nameInput)
+    if (input.textContent === '') {
+      input.focus()
     }
   }
 
@@ -22,7 +25,7 @@ class Thing extends Component {
 
   updateName = (ev) => {
     const thing = {...this.props.thing}
-    thing.name = ev.target.textContent
+    thing.name = ev.target.value
     this.props.saveThing(thing)
   }
 
@@ -39,15 +42,13 @@ class Thing extends Component {
       <li className="thing">
         <input type="checkbox" defaultChecked={thing.completed} onChange={this.toggleChecked} />
         <div className="details">
-          <span
+          <ContentEditable
             className="name"
-            contentEditable
-            onBlur={this.updateName}
+            onChange={this.updateName}
             onKeyDown={this.saveOnEnter}
-            ref={(input) => this.nameInput = input}
-          >
-            {thing.name}
-          </span>
+            html={thing.name}
+            ref={input => this.nameInput = input}
+          />
           {' '}
           <Actions thing={thing} removeThing={this.props.removeThing}  />
         </div>
