@@ -40,6 +40,10 @@ h2 {
   border-bottom: 1px solid #F1F1F1;
 }
 
+.thing:last-child {
+  border-bottom: none;
+}
+
 
 input:checked + .details {
   background:#F9F9F9;
